@@ -2,6 +2,11 @@ const operandsAndOperators = generateOperandsAndOperators();
 const question = generateQuestion(operandsAndOperators);
 
 const Question = () => {
+    return (
+    <div className="container"> 
+      {question}
+    </div>
+    )
 };
 
 function generateOperandsAndOperators() {
