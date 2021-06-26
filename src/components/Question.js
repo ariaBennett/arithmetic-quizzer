@@ -1,9 +1,7 @@
 import Equation from "equations"
 
-const operandsAndOperators = generateOperandsAndOperators();
-const question = generateQuestion(operandsAndOperators);
+const question = generateQuestion();
 const solution = generateSolution(question)
-console.log(solution)
 
 const Question = () => {
     return (
@@ -13,7 +11,7 @@ const Question = () => {
     )
 };
 
-function generateOperandsAndOperators() {
+function generateQuestion() {
     // Define how many operands to use, as well as lowest and highest allowed integers.
     const numberOfOperands = 2 + Math.floor(Math.random() * 3);
     const min = 0;
@@ -33,13 +31,6 @@ function generateOperandsAndOperators() {
         operators.push(operatorTable[(Math.floor(Math.random() * 4))]);
     };
     operators.pop();
-
-    return [operands, operators];
-}
-
-function generateQuestion(operandsAndOperators) {
-    const operands = operandsAndOperators[0];
-    const operators = operandsAndOperators[1];
 
     const question = operands.map(function(operand, index) {
         return operand + ' ' + (operators[index] || '');
