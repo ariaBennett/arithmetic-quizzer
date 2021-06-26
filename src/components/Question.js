@@ -1,10 +1,14 @@
+import Equation from "equations"
+
 const operandsAndOperators = generateOperandsAndOperators();
 const question = generateQuestion(operandsAndOperators);
+const solution = generateSolution(question)
+console.log(solution)
 
 const Question = () => {
     return (
     <div className="container"> 
-      {question}
+        {question}
     </div>
     )
 };
@@ -44,7 +48,8 @@ function generateQuestion(operandsAndOperators) {
     return question.join(' ');
 }
 
-function generateSolution(operandsAndOperators) {
+function generateSolution(question) {
+    return Math.round(Equation.solve(question));
 }
 
 export default Question;
