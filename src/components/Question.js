@@ -4,7 +4,7 @@ import Equation from "equations"
 import Card from 'react-bootstrap/Card';
 
 let question = generateQuestion();
-const solution = generateSolution(question)
+let solution = generateSolution(question)
 
 const Question = () => {
     const [userSolution, setUserSolution] = useState("");
@@ -23,6 +23,7 @@ const Question = () => {
         setUserIsCorrect(false);
         setSolutionSubmitted(false);
         question  = generateQuestion();
+        solution = generateSolution(question)
     }
 
     return (
