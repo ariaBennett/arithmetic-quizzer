@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Equation from "equations"
 
+import Card from 'react-bootstrap/Card';
+
 const question = generateQuestion();
 const solution = generateSolution(question)
 
@@ -23,34 +25,44 @@ const Question = () => {
     }
 
     return (
-        <div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        What is the solution, rounded to the nearest whole number?: {question}
+        <Card style={{ width: '30rem' }}>
+            <Card.Body>
+                <Card.Title>
+                    Question
+                </Card.Title>
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        What is the solution, rounded to the nearest whole number?:
+                        <br />
+                        <br />
+                        {`${question} = `}
                         <input 
                         type="text"
                         value={userSolution}
                         onChange={e => setUserSolution(e.target.value)} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-            </div>
-            <div>{solution}</div>
-            {solutionSubmitted ?
-                <div> { userIsCorrect ? 
-                    <div>
-                        {userSolution} Correct
-                    </div>  : 
-                    <div>
-                        {userSolution} Incorrect
-                    </div> }
-                    <input 
-                    type="button" 
-                    value="New Question" 
-                    onClick={reset}/>
-                </div> : null}
-        </div>
+                        <input type="submit" value="Submit" />
+                        <br />
+                        <br />
+                    </form>
+                </div>
+                {solutionSubmitted ?
+                    <div> 
+                        <div class="alert alert-info">Answer: <b>{solution}</b></div>
+                        { userIsCorrect ? 
+                        <div class="alert alert-success">
+                            Correct!: your answer <b>{userSolution}</b>
+                        </div>  : 
+                        <div class="alert alert-danger">
+                            Incorrect, your answer: <b>{userSolution}</b>
+                        </div> }
+                        <input 
+                        type="button" 
+                        value="New Question" 
+                        onClick={reset}/>
+                    </div> : null
+                }
+            </Card.Body>
+        </Card>
     )
 };
 
