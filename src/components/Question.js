@@ -32,18 +32,18 @@ const Question = () => {
                     Question
                 </Card.Title>
                 <div>
-                    <form onSubmit={handleSubmit}>
-                        What is the solution, rounded to the nearest whole number?:
-                        <br />
-                        <br />
-                        {`${question} = `}
+                    What is the solution, rounded to the nearest whole number?:
+                    <form class="form-inline mt-4 mb-4" onSubmit={handleSubmit}>
+                        <label class="mr-2">
+                            {`${question} = `}
+                        </label>
                         <input 
-                        type="text"
-                        value={userSolution}
-                        onChange={e => setUserSolution(e.target.value)} />
-                        <input type="submit" value="Submit" />
-                        <br />
-                        <br />
+                            class="form-control"
+                            type="text"
+                            value={userSolution}
+                            onChange={e => setUserSolution(e.target.value)} 
+                        />
+                        <input class="btn btn-primary" type="submit" value="Submit" />
                     </form>
                 </div>
                 {solutionSubmitted ?
@@ -57,9 +57,11 @@ const Question = () => {
                             Incorrect, your answer: <b>{userSolution}</b>
                         </div> }
                         <input 
-                        type="button" 
-                        value="New Question" 
-                        onClick={reset}/>
+                            class="btn btn-primary"
+                            type="button" 
+                            value="New Question" 
+                            onClick={reset}
+                        />
                     </div> : null
                 }
             </Card.Body>
