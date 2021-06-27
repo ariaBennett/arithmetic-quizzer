@@ -3,7 +3,7 @@ import Equation from "equations"
 
 import Card from 'react-bootstrap/Card';
 
-const question = generateQuestion();
+let question = generateQuestion();
 const solution = generateSolution(question)
 
 const Question = () => {
@@ -22,6 +22,7 @@ const Question = () => {
         setUserSolution("");
         setUserIsCorrect(false);
         setSolutionSubmitted(false);
+        question  = generateQuestion();
     }
 
     return (
